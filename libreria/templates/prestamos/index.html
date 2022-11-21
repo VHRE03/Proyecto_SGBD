@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block titulo %} Prestamos {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear_prestamo' %}" role="button">Agregar nuevo prestamo</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Prestamos</h4>
+
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th>Id del prestamo</th>
+                        <th>Id del lector</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de fin</th>
+                        <th>Libro</th>
+                        <th>Sucursal</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prestamo in prestamos %}
+                    <tr class="">
+                        <td>{{prestamo.id_prestamo}}</td>
+                        <td>{{prestamo.no_tarjeta_id}}</td>
+                        <td>{{prestamo.fecha_inicio|date:'d-m-Y'}}</td>
+                        <td>{{prestamo.fecha_fin|date:'d-m-Y'}}</td>
+                        <td>{{prestamo.id_libro.nombre}}</td>
+                        <td>{{prestamo.id_sucursal.nombre}}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-primary" href="{% url 'editar_prestamo' prestamo.id_prestamo %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_prestamo' prestamo.id_prestamo %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

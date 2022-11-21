@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block titulo %} Copias de libros {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear_copia' %}" role="button">Agregar nueva copia</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Copias de libros</h4>
+
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Libro</th>
+                        <th>Sucursal</th>
+                        <th>Copias</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for copia in copias %}
+                    <tr class="">
+                        <td>{{copia.id}}</td>
+                        <td>{{copia.id_libro.nombre}}</td>
+                        <td>{{copia.id_sucursal.nombre}}</td>
+                        <td>{{copia.no_copias}}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-primary" href="{% url 'editar_copia' copia.id %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_copia' copia.id %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

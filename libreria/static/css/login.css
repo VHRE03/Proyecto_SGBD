@@ -1,0 +1,45 @@
+#div_login{
+    display: flex;
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    box-shadow:-6px -6px 20px rgba(255, 255, 255,1), /*sombra*/
+                6px 6px 20px rgba(0, 0, 0, .1);
+}
+
+#div_img{
+    width: 50%;
+    padding: 2%;
+    display: flex;
+}
+
+#img_login{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#div_campos{
+    display: block;
+    width: 50%;
+    padding: 5%;
+}
+
+#titulo_login{
+    text-align: center;
+    margin: auto;
+}
+
+#div_btn_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn_login{
+    width: 100%;
+}

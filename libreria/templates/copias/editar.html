@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Editar copia {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        Editar una copia
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la copia</h4>
+        
+        {% include 'copias/form.html' %}
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

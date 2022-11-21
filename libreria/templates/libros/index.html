@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block titulo %} Libros {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear_libro' %}" role="button">Agregar nuevo libro</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Libros</h4>
+
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Edicion</th>
+                        <th>Año</th>
+                        <th>Numero de paginas</th>
+                        <th>Volumen</th>
+                        <th>Autor</th>
+                        <th>Editorial</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for libro in libros %}
+                    <tr class="">
+                        <td>{{libro.id_libro}}</td>
+                        <td>{{libro.nombre}}</td>
+                        <td>{{libro.edicion}}</td>
+                        <td>{{libro.anio}}</td>
+                        <td>{{libro.paginas}}</td>
+                        <td>{{libro.volumen}}</td>
+                        <td>{{libro.autor.nombre}}</td>
+                        <td>{{libro.editorial.nombre}}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-primary" href="{% url 'editar_libro' libro.id_libro %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_libro' libro.id_libro %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

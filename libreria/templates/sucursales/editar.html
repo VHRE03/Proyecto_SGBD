@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Editar sucursal {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        Editar una sucursal
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la sucursal</h4>
+        
+        {% include 'sucursales/form.html' %}
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block titulo %} Autores {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear_empleado' %}" role="button">Agregar nuevo empleado</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Empleado</h4>
+
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Sucursal</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Telefono</th>
+                        <th>correo</th>
+                        <th>Area</th>
+                        <th>Sueldo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados %}
+                    <tr class="">
+                        <td>{{empleado.id_empleado}}</td>
+                        <td>{{empleado.id_sucursal.nombre}}</td>
+                        <td>{{empleado.nombre}}</td>
+                        <td>{{empleado.direccion}}</td>
+                        <td>{{empleado.telefono}}</td>
+                        <td>{{empleado.correo}}</td>
+                        <td>{{empleado.area}}</td>
+                        <td>{{empleado.sueldo}}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-primary" href="{% url 'editar_empleado' empleado.id_empleado %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_empleado' empleado.id_empleado %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>    
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

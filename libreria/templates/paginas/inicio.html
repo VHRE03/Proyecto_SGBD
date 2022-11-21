@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block titulo %} Iicio {% endblock %}
+
+{% block contenido %} 
+
+<br>
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %} <img src="{% static "libreria\media\pluma-fuente.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+                <div class="card-body">
+                    <a href="{% url 'autores' %}" class="btn btn-primary">Autores</a>
+                </div>
+            </div>
+        </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            {% load static %} <img src="{% static "libreria\media\edicion.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+            <div class="card-body">
+              <a href="{% url 'editoriales' %}" class="btn btn-primary">Editoriales</a>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            {% load static %} <img src="{% static "libreria\media\abierto.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+            <div class="card-body">
+              <a href="{% url 'libros' %}" class="btn btn-primary">Libros</a>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            {% load static %} <img src="{% static "libreria\media\marcador-de-posicion.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+            <div class="card-body">
+              <a href="{% url 'sucursales' %}" class="btn btn-primary">Sucursales</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %} <img src="{% static "libreria\media\reconocimiento-facial.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+                <div class="card-body">
+                  <a href="{% url 'lectores' %}" class="btn btn-primary">Lectores</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %} <img src="{% static "libreria\media\reloj-de-arena.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+                <div class="card-body">
+                  <a href="{% url 'prestamos' %}" class="btn btn-primary">Prestamos</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %} <img src="{% static "libreria\media\archivo.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+                <div class="card-body">
+                  <a href="{% url 'copias' %}" class="btn btn-primary">Copias</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% load static %} <img src="{% static "libreria\media\empleado.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
+                <div class="card-body">
+                  <a href="{% url 'empleados' %}" class="btn btn-primary">Empleados</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

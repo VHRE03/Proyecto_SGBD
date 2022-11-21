@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Crear lector {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        Crear un lector
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del lector</h4>
+        
+        {% include 'lectores/form.html' %}
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

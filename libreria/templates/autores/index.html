@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block titulo %} Autores {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear_autor' %}" role="button">Agregar nuevo autor</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Autor</h4>
+
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for autor in autores %}
+                    <tr class="">
+                        <td>{{autor.id_autor}}</td>
+                        <td>{{autor.nombre}}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-primary" href="{% url 'editar_autor' autor.id_autor %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_autor' autor.id_autor %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>    
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

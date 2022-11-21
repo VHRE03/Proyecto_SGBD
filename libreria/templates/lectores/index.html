@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lectores {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear_lector' %}" role="button">Agregar nuevo lector</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Lectores</h4>
+
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th>Número de tarjeta</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Télefono</th>
+                        <th>Correo electronico</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lector in lectores %}
+                    <tr class="">
+                        <td>{{lector.no_tarjeta}}</td>
+                        <td>{{lector.nombre}}</td>
+                        <td>{{lector.direccion}}</td>
+                        <td>{{lector.telefono}}</td>
+                        <td>{{lector.correo}}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-primary" href="{% url 'editar_lector' lector.no_tarjeta %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_lector' lector.no_tarjeta %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

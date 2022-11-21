@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Editar autor {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        Editar información del autor
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del autor</h4>
+        
+        {% include 'autores/form.html' %}
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

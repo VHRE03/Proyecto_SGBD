@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block titulo %} Administradores {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear_libro' %}" role="button">Agregar nuevo libro</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Administradores</h4>
+
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Edicion</th>
+                        <th>Año</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for admin in administradores %}
+                    <tr class="">
+                        <td>{{admin.id_administrador}}</td>
+                        <td>{{admin.id_empleado_id}}</td>
+                        <td>{{admin.nom_usuario}}</td>
+                        <td>{{admin.contra}}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-primary" href="{% url 'editar_libro' admin.id_administrador %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_libro' admin.id_administrador %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}
