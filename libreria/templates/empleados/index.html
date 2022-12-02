@@ -39,8 +39,7 @@
                         <td>{{empleado.sueldo}}</td>
                         <td> 
                             <a name="" id="" class="btn btn-primary" href="{% url 'editar_empleado' empleado.id_empleado %}" role="button">Editar</a> |
-                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_empleado' empleado.id_empleado %}" role="button">Borrar</a>
-                        </td>
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_empleado' empleado.id_empleado %}" role="button">Borrar</a>                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

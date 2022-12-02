@@ -1,0 +1,45 @@
+/*SECCION PRINCIPAL DE PRESTAMOS*/
+#prestamo{
+    display: flex;
+    width: 90%;
+}
+
+/*DATOS DEL PRESTAMO*/
+#datos_prestamo{
+    display: block;
+    margin: 2%;
+    width: 50%;
+}
+
+/*LISTA DE LOS LIBROS*/
+#lista_libros{
+    display: block;
+    margin: 2%;
+    width: 50%;
+}
+
+#busqueda_libro{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#input_libro{
+    width: 80%;
+    margin-right: 2%;
+}
+
+#boton_buscar{
+    width: 20%;
+}
+
+/*LISTA DE LOS LIBROS QUE SE PUEDEN AGRGAR*/
+
+
+/**/
+#boton_finalizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

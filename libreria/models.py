@@ -37,7 +37,7 @@ class libros(models.Model):
         return fila
 
 class lectores(models.Model):
-    no_tarjeta = models.AutoField(primary_key = True, verbose_name = 'Número de tarjeta')
+    no_tarjeta = models.IntegerField(primary_key = True, unique = True, null=False, verbose_name = 'Número de tarjeta')
     nombre = models.CharField(max_length = 100, verbose_name = 'Nombre')
     direccion = models.CharField(max_length = 200, verbose_name = 'Dirección')
     telefono = models.IntegerField(verbose_name = 'Teléfono')
@@ -50,12 +50,16 @@ class sucursales(models.Model):
 
 class prestamos(models.Model):
     id_prestamo = models.AutoField(primary_key = True)
-    id_libro = models.ForeignKey(libros, on_delete=models.PROTECT, verbose_name = 'Libro')
     id_sucursal = models.ForeignKey(sucursales, on_delete=models.PROTECT, verbose_name = 'Sucursal')
     no_tarjeta = models.ForeignKey(lectores, on_delete=models.PROTECT, verbose_name = 'Lector')
     fecha_inicio = models.DateField(verbose_name = 'Fecha de inicio de prestamo')
     fecha_fin = models.DateField(verbose_name = 'Fecha de finalización de prestamo')
-
+    estado = models.CharField(max_length = 100, null=True, verbose_name = 'Estado')
+    
+class libro_prestamo(models.Model):
+    prestamo = models.ForeignKey(prestamos, on_delete=models.CASCADE, verbose_name = 'id_prestamo')
+    libro = models.ForeignKey(libros, on_delete=models.PROTECT, verbose_name = 'Libro')
+    
 class copias_libros(models.Model):
     id = models.AutoField(primary_key = True)
     id_libro = models.ForeignKey(libros, on_delete=models.PROTECT, verbose_name = 'Libro')
@@ -63,7 +67,7 @@ class copias_libros(models.Model):
     no_copias = models.IntegerField(verbose_name = 'Número de copias')
 
 class empleados(models.Model):
-    id_empleado = models.IntegerField(primary_key = True)
+    id_empleado = models.IntegerField(primary_key = True, unique = True)
     id_sucursal = models.ForeignKey(sucursales, on_delete=models.PROTECT, verbose_name = 'Sucursal')
     nombre = models.CharField(max_length = 100, verbose_name = 'Nombre')
     direccion = models.CharField(max_length = 200, verbose_name = 'Dirección')

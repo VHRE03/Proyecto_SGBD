@@ -1,0 +1,16 @@
+.btn_principal{
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+}
+
+.img_principal{
+    width: 60%;
+    align-self: center;
+    margin-bottom: 2%;
+}
+
+a{
+    text-decoration: none;
+}

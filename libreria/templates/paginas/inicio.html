@@ -6,37 +6,48 @@
 
 <br>
 
-<div class="container text-center">
+<div class="container">
     <div class="row">
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                {% load static %} <img src="{% static "libreria\media\pluma-fuente.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-                <div class="card-body">
-                    <a href="{% url 'autores' %}" class="btn btn-primary">Autores</a>
-                </div>
-            </div>
-        </div>
       <div class="col">
-        <div class="card" style="width: 18rem;">
-            {% load static %} <img src="{% static "libreria\media\edicion.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-            <div class="card-body">
-              <a href="{% url 'editoriales' %}" class="btn btn-primary">Editoriales</a>
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'autores' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\firma.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Autores
+                </a>
             </div>
         </div>
       </div>
+
       <div class="col">
-        <div class="card" style="width: 18rem;">
-            {% load static %} <img src="{% static "libreria\media\abierto.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-            <div class="card-body">
-              <a href="{% url 'libros' %}" class="btn btn-primary">Libros</a>
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'editoriales' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\investigar.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Editoriales
+                </a>
             </div>
         </div>
       </div>
+
       <div class="col">
-        <div class="card" style="width: 18rem;">
-            {% load static %} <img src="{% static "libreria\media\marcador-de-posicion.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-            <div class="card-body">
-              <a href="{% url 'sucursales' %}" class="btn btn-primary">Sucursales</a>
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'libros' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\libro.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Libros
+                </a>
+            </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'sucursales' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\universidad.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Sucursales
+                </a>
             </div>
         </div>
       </div>
@@ -45,38 +56,89 @@
     <br>
 
     <div class="row">
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                {% load static %} <img src="{% static "libreria\media\reconocimiento-facial.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-                <div class="card-body">
-                  <a href="{% url 'lectores' %}" class="btn btn-primary">Lectores</a>
-                </div>
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'lectores' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\tarjeta-de-identificacion.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Lectores
+                </a>
             </div>
         </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                {% load static %} <img src="{% static "libreria\media\reloj-de-arena.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-                <div class="card-body">
-                  <a href="{% url 'prestamos' %}" class="btn btn-primary">Prestamos</a>
-                </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'prestamos' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\reloj.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Prestamos
+                </a>
             </div>
         </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                {% load static %} <img src="{% static "libreria\media\archivo.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-                <div class="card-body">
-                  <a href="{% url 'copias' %}" class="btn btn-primary">Copias</a>
-                </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'copias' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\aglutinante.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Copias
+                </a>
             </div>
         </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                {% load static %} <img src="{% static "libreria\media\empleado.png" %}" style="width: 200px; padding: 1rem; align-self: center;" class="card-img-top" alt=""/>
-                <div class="card-body">
-                  <a href="{% url 'empleados' %}" class="btn btn-primary">Empleados</a>
-                </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'empleados' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\trabajador.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Empleados
+                </a>
             </div>
         </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'reporte1' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\reporte_sucursal.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Reporte de
+                  Sucursales
+                </a>
+            </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'lectores' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\tarjeta-de-identificacion.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Reporte de
+                  libros
+                </a>
+            </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+            <div class="card-body" style="padding: 0%;">
+                <a  href="{% url 'lectores' %}" class="btn btn-light" style="width: 100%; display: flex; align-items: center; margin: 0%; font-weight: bold; font-size: x-large; color: #0d6efd; background-color: white; ">
+                  {% load static %} <img src="{% static "libreria\media\tarjeta-de-identificacion.png" %}" style="width: 50%; align-self: flex-start; padding: 2%; background-color: white;" class="card-img-top" alt=""/> 
+                  Reporte de
+                  prestamos
+                </a>
+            </div>
+        </div>
+      </div>
     </div>
 </div>
 

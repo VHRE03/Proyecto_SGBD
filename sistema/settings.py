@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jquery',
     'libreria',
 ]
 
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'sistema.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '192.168.74.140:1521/xepdb1',
+        'NAME': '192.168.74.139:1521/xepdb1',
         'USER': 'proyecto',
         'PASSWORD': '123',
     }

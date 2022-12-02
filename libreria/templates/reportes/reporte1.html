@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block titulo %} Iicio {% endblock %}
+
+{% block contenido %} 
+
+<div>
+    <h1 style="text-align: center;">Reporte de sucursales</h1>
+
+    <!--PROMEDIO DE SULDO POR SUCURSAL-->
+    <div>
+        <h2>Sueldo promedio por sucursal</h2>
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Sucursal</th>
+                        <th scope="col">Sueldo promedio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sal in datos1 %}
+                        <tr class="">
+                            <td>{{ sal.0 }}</td>
+                            <td>{{ sal.1 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <!--TOTAL DE LIBROS POR SUCURSAL-->
+    <div>
+        <h2>Número total de libros por sucursal</h2>
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Sucursal</th>
+                        <th scope="col">Total de libros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dato in datos2 %}
+                        <tr class="">
+                            <td>{{ dato.1 }}</td>
+                            <td>{{ dato.0 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <!--DATOS GENERALES DE LOS EMPLEADOS-->
+    <div>
+        <h2>Número total de libros por sucursal</h2>
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Sucursal</th>
+                        <th scope="col">Sueldo</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dato in datos3 %}
+                        <tr class="">
+                            <td>{{ dato.1 }}</td>
+                            <td>{{ dato.0 }}</td>
+                            <td>{{ dato.2 }}</td>
+                            <td>{{ dato.3 }}</td>
+                            <td>{{ dato.4 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

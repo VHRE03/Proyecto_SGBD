@@ -1,6 +1,7 @@
 #div_login{
     display: flex;
     width: 60%;
+    height: 70%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -18,23 +19,36 @@
 }
 
 #img_login{
-    width: 100%;
+    width: 80%;
+    height: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
 }
 
-#div_campos{
-    display: block;
+#form_login{
     width: 50%;
     padding: 5%;
+    margin: auto;
 }
 
 #titulo_login{
     text-align: center;
+    width: 100%;
     margin: auto;
 }
 
+#input_usuario{
+    font-size: x-large;
+}
+
+#input_contra{
+    font-size: x-large;
+}
+
 #div_btn_login{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,4 +56,7 @@
 
 #btn_login{
     width: 100%;
+    color: white;
+    font-size: x-large;
+    background-color: #fd7e14;
 }

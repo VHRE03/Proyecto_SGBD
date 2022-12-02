@@ -22,11 +22,11 @@
     <div id="div_login">
       <!--IMAGEN DE LOGIN-->
       <div id="div_img">
-        {% load static %} <img id="img_login" src="{% static "libreria\media\libro-abierto.gif" %}" />
+        {% load static %} <img id="img_login" src="{% static "libreria\media\libro-electronico.png" %}" />
       </div>
 
       <!--PARAMETROS DE ENTRADA DEL LOGIN-->
-      <form method="post">
+      <form method="post" id="form_login">
         {% csrf_token %}
 
         <div id="div_campos" class="mb-3">
@@ -34,15 +34,15 @@
           <br><br>
   
           <!--INPUT NOMBRE DE USUARIO-->
-          <input type="text" name="usuario" id="" class="form-control" placeholder="Nombre de usuario" aria-describedby="helpId">
+          <input type="text" name="usuario" id="input_usuario" class="form-control" placeholder="Nombre de usuario" aria-describedby="helpId">
           <br>
   
           <!--INPUT CONTRASEÑA-->
-          <input type="password"class="form-control" name="contra" id="" aria-describedby="helpId" placeholder="Contraseña">     
+          <input type="password"class="form-control" name="contra" id="input_contra" aria-describedby="helpId" placeholder="Contraseña">     
           <br><br>
   
           <div id="div_btn_login">
-            <input name="" id="" class="btn btn-primary" type="submit" value="Enviar información">
+            <input name="" id="btn_login" class="btn btn-light" type="submit" value="Ingresar">
           </div>
         </div>
       </form>

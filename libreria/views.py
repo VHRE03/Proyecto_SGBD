@@ -2,17 +2,18 @@ from ast import Return, Str
 from enum import auto
 
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-
+from django.db import connection
 from .forms import (Autor_form, Copias_libros_form, Editorial_form,
                     Empleados_form, Lector_form, Libro_form, Prestamo_form,
                     Sucursal_form)
 from .models import (administradores, autores, copias_libros, editoriales,
-                     empleados, lectores, libros, prestamos, sucursales)
+                     empleados, lectores, libro_prestamo, libros, prestamos, sucursales)
 
+import json
 
 #LOGIN
 def ingresar(request):
@@ -48,17 +49,21 @@ def mostrar_administradores(request):
 def mostrar_autores(request):
     lista_autores = list(autores.objects.raw('SELECT * FROM LIBRERIA_AUTORES ORDER BY ID_AUTOR'))
     return render(request, 'autores/index.html', {'autores': lista_autores})
+    
 
 #CREAR UN AUTOR
 def crear_autor(request):
     if request.POST:
         formulario = Autor_form(request.POST)
+        items = formulario.data
+        print(items.get('nombre'))
         if formulario.is_valid():
             formulario.save()
             return redirect('autores')
 
     return render(request, 'autores/crear.html', {'formulario': Autor_form})
 
+#EDITAR UN AUTOR
 def editar_autor(request, id):
     #SE OBTIENE EL LIBRO Y EL FORMULARIO DE ESTE
     autor = autores.objects.get(id_autor = id)
@@ -71,10 +76,12 @@ def editar_autor(request, id):
 
     return render(request, 'autores/editar.html', {'formulario': formulario})
 
+#ELIMINAR UN AUTOR
 def eliminar_autor(request, id):
     autor = autores.objects.get(id_autor = id)
     autor.delete()
     return redirect('autores')
+
 
 #-----------------------------------------------------PAGINAS DE editoriales-----------------------------------------------------
 def mostrar_editoriales(request):
@@ -229,7 +236,7 @@ def crear_prestamo(request):
         formulario = Prestamo_form(request.POST)
         if formulario.is_valid():
             formulario.save()
-            return redirect('prestamos')
+            return redirect('prestamo_activo')
 
     lista_sucursales = list(sucursales.objects.raw('SELECT * FROM LIBRERIA_SUCURSALES ORDER BY ID_SUCURSAL'))
     return render(request, 'prestamos/crear.html', {'formulario': Prestamo_form, 'sucursales': lista_sucursales})
@@ -253,6 +260,44 @@ def editar_prestamo(request, id):
 def eliminar_prestamo(request, id):
     prestamo = prestamos.objects.get(id_prestamo = id)
     prestamo.delete()
+    return redirect('prestamos')
+
+def prestamo_activo(request):
+
+    #BUSCAR EL PRESTAMO QUE SE ENCUENTRA ACTIVO
+    prestamo_activo = prestamos.objects.get(estado = 'pendiente');
+
+    #BUSCAR LA LISTA DE LIBROS PARA AGREGAR
+    lista_libros = list(libros.objects.raw('SELECT * FROM LIBRERIA_LIBROS ORDER BY ID_LIBRO'))
+
+    #BUSCAR LA LISTA DE LIBROS ASOCIADOS AL PRESTAMO
+    try:
+        libros_prestamo = list(libro_prestamo.objects.get(prestamo_id = prestamo_activo.id_prestamo))
+    except Exception as e:
+        libros_prestamo = list(libro_prestamo.objects.raw('SELECT * FROM LIBRERIA_LIBRO_PRESTAMO'))
+
+    if request.POST:
+        libro_buscado = str(request.POST['libro'])
+        print(libro_buscado) 
+        libros_busqueda = list(libros.objects.filter(nombre__contains = libro_buscado) or libros.objects.filter(id_libro__contains = libro_buscado))
+
+        return render(request, 'prestamos/prestamo_activo.html', {'prestamo': prestamo_activo, 'libros':libros_busqueda, 'libros_prestamo':libros_prestamo, })
+  
+    return render(request, 'prestamos/prestamo_activo.html', {'prestamo': prestamo_activo, 'libros':lista_libros, 'libros_prestamo':libros_prestamo, })
+
+def agregar_libro_prestamo(request, id_prestamo, id_libro):
+    
+    with connection.cursor() as cursor:
+        cursor.execute("INSERT INTO LIBRERIA_LIBRO_PRESTAMO(LIBRO_ID, PRESTAMO_ID) VALUES (%s, %s)", [id_libro, id_prestamo])
+        cursor.close()
+
+    return redirect('prestamo_activo')
+
+def finalizar_prestamo(request, id_prestamo):
+    with connection.cursor() as cursor:
+        cursor.execute("UPDATE LIBRERIA_PRESTAMOS SET ESTADO=%s WHERE ID_PRESTAMO=%s", ["finalizado", id_prestamo])
+        cursor.close()
+
     return redirect('prestamos')
 
 #-----------------------------------------------------PAGINAS DE COPIAS-----------------------------------------------------
@@ -316,3 +361,31 @@ def eliminar_empleado(request, id):
     empleado = empleados.objects.get(id_empleado = id)
     empleado.delete()
     return redirect('empleados')
+
+def aumentar_empleado(request, id_empleado):
+
+    empleado = int(id_empleado)
+
+    with connection.cursor() as cursor:
+        cursor.execute("execute pa_empleados_aumentar10(%s)", [empleado])
+        cursor.close()
+        return redirect('empleados')
+
+#-----------------------------------------------------PAGINAS DE REPORTES-----------------------------------------------------
+def mostrar_reporte1(request):
+    with connection.cursor() as cursor:
+        #SALARIO PROMEDIO
+        cursor.execute("SELECT * FROM VISTA_SALARIO")
+        salario_promedio_sucursal =  cursor.fetchall()
+
+        #NUMERO DE LIBROS POR SUCURSAL
+        cursor.execute("SELECT SUM(NO_COPIAS), LIBRERIA_SUCURSALES.NOMBRE FROM LIBRERIA_COPIAS_LIBROS INNER JOIN LIBRERIA_SUCURSALES ON LIBRERIA_SUCURSALES.ID_SUCURSAL = LIBRERIA_COPIAS_LIBROS.ID_SUCURSAL_ID GROUP BY LIBRERIA_SUCURSALES.NOMBRE")
+        numero_libros_sucursal = cursor.fetchall()
+
+        #DATOS DE TODOS LOS EMPLEADOS
+        cursor.execute("SELECT ID_EMPLEADO, LIBRERIA_EMPLEADOS.NOMBRE, LIBRERIA_SUCURSALES.NOMBRE, SUELDO, FUN_SALARIO(SUELDO) FROM LIBRERIA_EMPLEADOS INNER JOIN LIBRERIA_SUCURSALES ON LIBRERIA_SUCURSALES.ID_SUCURSAL = LIBRERIA_EMPLEADOS.ID_SUCURSAL_ID")
+        lista_completa_empleados = cursor.fetchall()
+
+        cursor.close()
+
+    return render(request, 'reportes/reporte1.html', {'datos1': salario_promedio_sucursal, 'datos2': numero_libros_sucursal, 'datos3': lista_completa_empleados})
